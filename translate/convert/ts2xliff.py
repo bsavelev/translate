@@ -1,5 +1,6 @@
 from translate.convert import convert
 from translate.storage import xliff, ts2
+from hashlib import md5
 
 """Convert TS files to XLIFF localization files.
 """
@@ -10,7 +11,8 @@ class TS2Xliff(object):
         """
         :type tsunit: ts2.tsunit
         """
-        unit = xliff.xliffunit(inputunit.getsource())
+        source = inputunit.getsource()
+        unit = xliff.xliffunit(source)
         unit.target = inputunit.gettarget()
         if inputunit.target:
             unit.markfuzzy(inputunit.isfuzzy())
@@ -31,6 +33,7 @@ class TS2Xliff(object):
             unit.createcontextgroup("ts-entry", [("x-ts-trancomment", comment)], purpose="information")
             unit.addnote(comment, origin="translator")
         unit.xmlelement.set("resname", context)
+        unit.xmlelement.set("id", md5(source.encode('utf-8')).hexdigest())
         return unit
 
     def contextlist(self, location):
