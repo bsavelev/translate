@@ -90,7 +90,7 @@ class xliffunit(lisa.LISAunit):
     rootNode = "trans-unit"
     languageNode = "source"
     textNode = ""
-    namespace = 'urn:oasis:names:tc:xliff:document:1.1'
+    namespace = 'urn:oasis:names:tc:xliff:document:1.2'
 
     _default_xml_space = "default"
 
@@ -617,13 +617,13 @@ class xlifffile(lisa.LISAfile):
     rootNode = "xliff"
     bodyNode = "body"
     XMLskeleton = '''<?xml version="1.0" ?>
-<xliff version='1.1' xmlns='urn:oasis:names:tc:xliff:document:1.1'>
+<xliff version='1.2' xmlns='urn:oasis:names:tc:xliff:document:1.2'>
 <file original='NoName' source-language='en' datatype='plaintext'>
 <body>
 </body>
 </file>
 </xliff>'''
-    namespace = 'urn:oasis:names:tc:xliff:document:1.1'
+    namespace = 'urn:oasis:names:tc:xliff:document:1.2'
     unversioned_namespace = 'urn:oasis:names:tc:xliff:document:'
 
     suggestions_in_format = True
